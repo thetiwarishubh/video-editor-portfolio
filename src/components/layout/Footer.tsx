@@ -1,16 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom"; // agar Next.js hai to next/link use karna
-// import Link from "next/link"; // Next.js ke liye (comment/uncomment as per your project)
+import { Link } from "react-router-dom";
 
 import {
   Instagram,
   Youtube,
   Mail,
-  Twitter,
   ArrowRight,
 } from "lucide-react";
+
+import { FaWhatsapp } from "react-icons/fa";
+
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -35,10 +36,10 @@ const Footer = () => {
             {/* Social Icons */}
             <div className="mt-8 flex gap-5">
               {[
-                { icon: Instagram, href: "#", label: "Instagram" },
-                { icon: Youtube, href: "#", label: "YouTube" },
-                { icon: Twitter, href: "#", label: "Twitter" },
-                { icon: Mail, href: "mailto:hello@rahulmotion.com", label: "Email" },
+                { icon: Instagram, href: "https://www.instagram.com/rahul_motion", label: "Instagram" },
+                { icon: Youtube, href: "https://www.youtube.com/@Rahul.motion", label: "YouTube" },
+                { icon: FaWhatsapp, href: "https://wa.me/919334609201", label: "WhatsApp" },
+                { icon: Mail, href: "mailto:Rahulkumardas400m@gmail.com", label: "Email" }
               ].map((item, i) => (
                 <motion.a
                   key={item.label}

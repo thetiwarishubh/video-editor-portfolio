@@ -1,5 +1,6 @@
 "use client";
-
+import { SiAdobepremierepro, SiAdobeaftereffects, SiAdobeillustrator, SiAdobephotoshop, SiCanva, } from "react-icons/si";
+import { RiNotionFill } from "react-icons/ri";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -18,10 +19,7 @@ import {
   Users,
   Video,
   Sparkles,
-  Clock,
   TrendingUp,
-  Zap,
-  Calendar,
   Mail,
 } from "lucide-react";
 
@@ -149,13 +147,38 @@ const About = () => {
 
   // Technical Skills
   const skills = [
-    { name: 'Premiere Pro', icon: '🎬', color: 'from-purple-500 to-pink-500' },
-    { name: 'After Effects', icon: '✨', color: 'from-blue-500 to-cyan-500' },
-    { name: 'DaVinci Resolve', icon: '🎨', color: 'from-red-500 to-orange-500' },
-    { name: 'Audition', icon: '🎵', color: 'from-green-500 to-emerald-500' },
-    { name: 'Photoshop', icon: '🖼️', color: 'from-indigo-500 to-blue-500' },
-    { name: 'Final Cut Pro', icon: '🎥', color: 'from-yellow-500 to-orange-500' },
+    {
+      name: "Adobe Premiere Pro",
+      icon: SiAdobepremierepro,
+      color: "text-purple-500",
+    },
+    {
+      name: "After Effects",
+      icon: SiAdobeaftereffects,
+      color: "text-blue-500",
+    },
+    {
+      name: "Photoshop",
+      icon: SiAdobephotoshop,
+      color: "text-sky-500",
+    },
+    {
+      name: "Illustrator",
+      icon: SiAdobeillustrator,
+      color: "text-orange-500",
+    },
+    {
+      name: "Canva",
+      icon: SiCanva,
+      color: "text-cyan-500",
+    },
+    {
+      name: "Notion",
+      icon: RiNotionFill,
+      color: "text-cyan-500",
+    },
   ];
+
 
   return (
     <section
@@ -293,7 +316,7 @@ const About = () => {
         <div className="skills-section mb-24 md:mb-32">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Technical <span className="text-primary">Arsenal</span>
+              Tools I Work With
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Tools I master to bring your vision to life
@@ -301,28 +324,32 @@ const About = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {skills.map((skill) => (
-              <div key={skill.name} className="skill-card group">
-                <Card className="h-full overflow-hidden hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex items-center justify-between">
-                      <span className="text-2xl">{skill.icon}</span>
-                    </div>
-                    <CardTitle className="text-xl mt-2">{skill.name}</CardTitle>
-                  </CardHeader>
-                </Card>
-              </div>
-            ))}
+            {skills.map((skill) => {
+              const Icon = skill.icon;
+
+              return (
+                <div key={skill.name} className="skill-card group">
+                  <Card className="h-full hover:shadow-lg transition-all">
+                    <CardHeader className="flex flex-col items-center text-center gap-4">
+                      <div className="w-14 h-14 rounded-xl bg-secondary flex items-center justify-center">
+                        <Icon className={`w-8 h-8 ${skill.color} group-hover:scale-110 transition-transform`} />
+
+                      </div>
+
+                      <CardTitle className="text-lg">
+                        {skill.name}
+                      </CardTitle>
+                    </CardHeader>
+                  </Card>
+                </div>
+              );
+            })}
+
           </div>
         </div>
 
         {/* Final CTA */}
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-8">
-            <Zap className="w-4 h-4" />
-            Currently accepting 3 projects for March
-          </div>
-
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
             Ready to make your next video <span className="text-primary">unskippable</span>?
           </h2>
@@ -340,40 +367,6 @@ const About = () => {
               <Mail className="w-5 h-5" />
               Let's Talk
             </Button>
-          </div>
-
-          <div className="mt-12 pt-8 border-t">
-            <div className="flex flex-wrap justify-center gap-6">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
-                  <Calendar className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="font-medium">Quick Response</p>
-                  <p className="text-sm text-muted-foreground">Within 24 hours</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
-                  <CheckCircle2 className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="font-medium">100% Satisfaction</p>
-                  <p className="text-sm text-muted-foreground">Money-back guarantee</p>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
-                  <Clock className="w-5 h-5" />
-                </div>
-                <div>
-                  <p className="font-medium">Fast Delivery</p>
-                  <p className="text-sm text-muted-foreground">5-7 day turnaround</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

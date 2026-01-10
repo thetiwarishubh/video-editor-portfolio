@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle2, Award, Clock, Users, Video, Sparkles } from "lucide-react";
+import { CheckCircle2, Award, Users, Video, Sparkles } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -77,11 +77,10 @@ const About = () => {
   }, []);
 
   const stats = [
-    { icon: Video, value: "180+", label: "Projects Delivered" },
-    { icon: Users, value: "2.4M+", label: "Total Views" },
-    { icon: Clock, value: "~68%", label: "Avg. Retention" },
-    { icon: Award, value: "14", label: "Creator Collabs" },
-    { icon: Sparkles, value: "4+", label: "Years Editing" },
+    { icon: Video, value: "5000+", label: "Projects Delivered" },
+    { icon: Users, value: "500M+", label: "Total Views" },
+    { icon: Award, value: "20+", label: "Creator Collabs" },
+    { icon: Sparkles, value: "6+", label: "Years Editing" },
   ];
 
   const obsessions = [
@@ -120,7 +119,7 @@ const About = () => {
         </div>
 
         {/* Stats - Reliable GSAP animation */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 mb-24 md:mb-32">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8 mb-24 md:mb-32">
           {stats.map((stat, i) => (
             <div
               key={i}

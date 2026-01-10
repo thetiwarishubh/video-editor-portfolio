@@ -234,18 +234,18 @@ const About = () => {
               </h2>
 
               <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p className="text-lg">
-                  I started cutting videos in 2021 with nothing but passion, cracked software, and endless nights.
+                <p className="text-sm md:text-base">
+                  I started cutting videos in 2020 with nothing but passion, cracked software, and endless nights.
                   What began as fan edits and gaming montages turned into a deep obsession with pacing, emotion,
                   and that magical moment when a viewer forgets they're watching an edit.
                 </p>
-                <p className="text-lg">
+                <p className="text-sm md:text-base">
                   Today I work with creators who care about retention as much as aesthetics — from long-form YouTube deep-dives
                   to addictive 15-second Reels. My goal is simple: make people feel something… and stay until the end.
                 </p>
 
                 <div className="pt-6">
-                  <blockquote className="border-l-4 border-primary/70 pl-6 italic text-xl text-foreground/90">
+                  <blockquote className="border-l-4 border-primary/70 pl-6 italic text-sm sm:text-base text-foreground/90">
                     "Good editing is invisible. Great editing makes you feel like you were there."
                   </blockquote>
                   <p className="text-sm text-muted-foreground mt-2 pl-6">— My editing philosophy</p>
@@ -258,7 +258,7 @@ const About = () => {
           <div className="space-y-16 lg:space-y-20">
             {/* What I Obsess Over */}
             <div>
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-2">
+              <h3 className="text-xl md:text-2xl font-bold mb-6 flex items-center gap-2">
                 <Sparkles className="w-6 h-6 text-primary" />
                 What I Obsess Over
               </h3>
@@ -269,7 +269,7 @@ const About = () => {
                     className="flex items-start gap-3 p-3 rounded-lg hover:bg-secondary/50 transition-colors"
                   >
                     <CheckCircle2 className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <span className="text-base md:text-lg">{item}</span>
+                    <span className="text-sm md:text-base">{item}</span>
                   </div>
                 ))}
               </div>
@@ -277,7 +277,7 @@ const About = () => {
 
             {/* Timeline */}
             <div ref={timelineRef}>
-              <h3 className="text-2xl md:text-3xl font-bold mb-6 flex items-center gap-2">
+              <h3 className="text-xl md:text-2xl font-bold mb-6 flex items-center gap-2">
                 <TrendingUp className="w-6 h-6 text-primary" />
                 Quick Timeline
               </h3>
@@ -295,7 +295,7 @@ const About = () => {
                     <div className="absolute left-1 top-2 w-4 h-4 rounded-full bg-primary border-4 border-background" />
                     <Card className="ml-6 bg-card/60 border-border hover:border-primary/40 transition-all">
                       <CardHeader className="pb-2">
-                        <CardTitle className="text-xl md:text-2xl text-primary font-bold">
+                        <CardTitle className="text-lg md:text-xl text-primary font-bold">
                           {item.year}
                         </CardTitle>
                       </CardHeader>
@@ -315,7 +315,7 @@ const About = () => {
         {/* Skills Dashboard */}
         <div className="skills-section mb-24 md:mb-32">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font- mb-4">
               Tools I Work With
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -323,7 +323,7 @@ const About = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid min-[500px]:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {skills.map((skill) => {
               const Icon = skill.icon;
 

@@ -9,7 +9,6 @@ import {
   Youtube,
   Mail,
   Twitter,
-  Send,
   ArrowRight,
 } from "lucide-react";
 

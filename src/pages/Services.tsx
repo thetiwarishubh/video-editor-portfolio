@@ -1,3 +1,4 @@
+"use client";
 
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -11,11 +12,13 @@ import {
   Zap,
   CheckCircle2,
   ChevronRight,
-  Award,
   Headphones,
   FileVideo,
   Sparkle,
   Rocket,
+  Calendar,
+  Sparkles,
+  X
 } from "lucide-react";
 import {
   Card,
@@ -27,11 +30,76 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 
 const Services = () => {
   const [activeTab, setActiveTab] = useState("all");
-  const [, setHoveredService] = useState<number | null>(null);
+  const [hoveredService, setHoveredService] = useState<number | null>(null);
+  const [selectedService, setSelectedService] = useState<any>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);
+
+  // Color mapping with complete classes
+  const getColorClasses = (color: string) => {
+    switch (color) {
+      case 'red':
+        return {
+          gradient: 'from-red-500 to-orange-500',
+          text: 'text-red-500',
+          bg: 'bg-red-500/10',
+          border: 'border-red-500/20',
+          hover: 'hover:bg-red-500/20'
+        };
+      case 'pink':
+        return {
+          gradient: 'from-pink-500 to-rose-500',
+          text: 'text-pink-500',
+          bg: 'bg-pink-500/10',
+          border: 'border-pink-500/20',
+          hover: 'hover:bg-pink-500/20'
+        };
+      case 'purple':
+        return {
+          gradient: 'from-purple-500 to-violet-500',
+          text: 'text-purple-500',
+          bg: 'bg-purple-500/10',
+          border: 'border-purple-500/20',
+          hover: 'hover:bg-purple-500/20'
+        };
+      case 'amber':
+        return {
+          gradient: 'from-amber-500 to-yellow-500',
+          text: 'text-amber-500',
+          bg: 'bg-amber-500/10',
+          border: 'border-amber-500/20',
+          hover: 'hover:bg-amber-500/20'
+        };
+      case 'blue':
+        return {
+          gradient: 'from-blue-500 to-cyan-500',
+          text: 'text-blue-500',
+          bg: 'bg-blue-500/10',
+          border: 'border-blue-500/20',
+          hover: 'hover:bg-blue-500/20'
+        };
+      case 'green':
+        return {
+          gradient: 'from-green-500 to-emerald-500',
+          text: 'text-green-500',
+          bg: 'bg-green-500/10',
+          border: 'border-green-500/20',
+          hover: 'hover:bg-green-500/20'
+        };
+      default:
+        return {
+          gradient: 'from-primary to-primary/80',
+          text: 'text-primary',
+          bg: 'bg-primary/10',
+          border: 'border-primary/20',
+          hover: 'hover:bg-primary/20'
+        };
+    }
+  };
 
   const services = [
     {
@@ -49,7 +117,8 @@ const Services = () => {
         "Sound design enhancement",
         "Retention analytics report"
       ],
-      stats: { retention: "+35%", views: "+2.5x", subs: "+15%" }
+      stats: { retention: "+35%", views: "+2.5x", subs: "+15%" },
+      examples: ["Tech Reviews", "Educational Content", "Documentaries", "Vlogs"]
     },
     {
       id: 2,
@@ -66,7 +135,8 @@ const Services = () => {
         "Caption animations",
         "Engagement triggers"
       ],
-      stats: { retention: "85%+", shares: "3x", completion: "92%" }
+      stats: { retention: "85%+", shares: "3x", completion: "92%" },
+      examples: ["Instagram Reels", "TikToks", "YouTube Shorts", "Facebook Stories"]
     },
     {
       id: 3,
@@ -83,7 +153,8 @@ const Services = () => {
         "Motion graphics",
         "Licensed music"
       ],
-      stats: { engagement: "+40%", recall: "3.5x", leads: "+25%" }
+      stats: { engagement: "+40%", recall: "3.5x", leads: "+25%" },
+      examples: ["Company Introductions", "Product Launches", "Testimonials", "Brand Stories"]
     },
     {
       id: 4,
@@ -100,7 +171,8 @@ const Services = () => {
         "Light effects",
         "Color theory application"
       ],
-      stats: { quality: "+60%", mood: "Premium", consistency: "100%" }
+      stats: { quality: "+60%", mood: "Premium", consistency: "100%" },
+      examples: ["Cinematic Looks", "Film Emulation", "Color Correction", "Visual Effects"]
     },
     {
       id: 5,
@@ -117,6 +189,8 @@ const Services = () => {
         "Multi-cam editing",
         "SEO-optimized titles"
       ],
+      stats: { clarity: "Studio", retention: "78%", downloads: "+30%" },
+      examples: ["Interview Podcasts", "Educational Series", "Conversational Shows", "Audio-Only"]
     },
     {
       id: 6,
@@ -133,18 +207,19 @@ const Services = () => {
         "Infographic motion",
         "Template creation"
       ],
-      stats: { uniqueness: "100%", engagement: "+45%", recall: "4.2x" }
+      stats: { uniqueness: "100%", engagement: "+45%", recall: "4.2x" },
+      examples: ["Logo Animations", "Title Sequences", "Infographic Videos", "Social Media Assets"]
     },
   ];
 
   const categories = [
-    { id: "all", label: "All Services", count: services.length },
-    { id: "youtube", label: "YouTube", count: services.filter(s => s.category === "youtube").length },
-    { id: "shorts", label: "Short Form", count: services.filter(s => s.category === "shorts").length },
-    { id: "commercial", label: "Commercial", count: services.filter(s => s.category === "commercial").length },
-    { id: "post", label: "Post-Production", count: services.filter(s => s.category === "post").length },
-    { id: "audio", label: "Audio", count: services.filter(s => s.category === "audio").length },
-    { id: "motion", label: "Motion", count: services.filter(s => s.category === "motion").length },
+    { id: "all", label: "All Services", count: services.length, color: "primary" },
+    { id: "youtube", label: "YouTube", count: services.filter(s => s.category === "youtube").length, color: "red" },
+    { id: "shorts", label: "Short Form", count: services.filter(s => s.category === "shorts").length, color: "pink" },
+    { id: "commercial", label: "Commercial", count: services.filter(s => s.category === "commercial").length, color: "purple" },
+    { id: "post", label: "Post-Production", count: services.filter(s => s.category === "post").length, color: "amber" },
+    { id: "audio", label: "Audio", count: services.filter(s => s.category === "audio").length, color: "blue" },
+    { id: "motion", label: "Motion", count: services.filter(s => s.category === "motion").length, color: "green" },
   ];
 
   const filteredServices = activeTab === "all"
@@ -160,17 +235,13 @@ const Services = () => {
     { step: 6, title: "Delivery", description: "Final files delivered in all required formats", icon: Rocket },
   ];
 
-  const colorClasses = {
-    red: "from-red-500 to-orange-500",
-    pink: "from-pink-500 to-rose-500",
-    purple: "from-purple-500 to-violet-500",
-    amber: "from-amber-500 to-yellow-500",
-    blue: "from-blue-500 to-cyan-500",
-    green: "from-green-500 to-emerald-500"
+  const openServiceDialog = (service: any) => {
+    setSelectedService(service);
+    setDialogOpen(true);
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-background via-background to-secondary/10 text-foreground py-16 md:py-12 lg:py-16 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-b from-background via-background to-secondary/10 text-foreground py-16 md:py-20 lg:py-24 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />
@@ -183,11 +254,11 @@ const Services = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-8">
-            <Award className="w-4 h-4" />
-            Video Editing Services
+            <Sparkles className="w-4 h-4" />
+            Professional Video Editing Services
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter mb-6">
@@ -198,10 +269,10 @@ const Services = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10 leading-relaxed">
-            Professional video editing services that transform your raw footage into
-            <span className="text-primary font-semibold"> scroll-stopping, high-performing content</span>.
+            Transform your raw footage into <span className="text-primary font-semibold">high-performing, scroll-stopping content</span> that drives results.
           </p>
         </motion.div>
+
 
         {/* Services Navigation */}
         <motion.div
@@ -211,30 +282,25 @@ const Services = () => {
           className="mb-12"
         >
           <div className="flex flex-wrap gap-2 justify-center">
-            {categories.map((category) => (
-              <Button
-                key={category.id}
-                variant={activeTab === category.id ? "default" : "outline"}
-                onClick={() => setActiveTab(category.id)}
-                className="relative cursor-pointer"
-              >
-                {category.label}
-                <Badge
-                  variant="secondary"
-                  className="ml-2 bg-background/50 text-xs"
+            {categories.map((category) => {
+              const colorClasses = getColorClasses(category.color);
+              return (
+                <Button
+                  key={category.id}
+                  variant={activeTab === category.id ? "default" : "outline"}
+                  onClick={() => setActiveTab(category.id)}
+                  className={`relative cursor-pointer ${activeTab === category.id ? '' : colorClasses.hover}`}
                 >
-                  {category.count}
-                </Badge>
-                {activeTab === category.id && (
-                  <motion.div
-                    layoutId="activeTab"
-                    className="absolute inset-0 bg-primary rounded-md"
-                    initial={false}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
-                )}
-              </Button>
-            ))}
+                  {category.label}
+                  <Badge
+                    variant="secondary"
+                    className="ml-2 bg-background/50 text-xs"
+                  >
+                    {category.count}
+                  </Badge>
+                </Button>
+              );
+            })}
           </div>
         </motion.div>
 
@@ -249,62 +315,68 @@ const Services = () => {
               transition={{ duration: 0.3 }}
               className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
             >
-              {filteredServices.map((service, index) => (
-                <motion.div
-                  key={service.id}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  whileHover={{ y: -8 }}
-                  onHoverStart={() => setHoveredService(service.id)}
-                  onHoverEnd={() => setHoveredService(null)}
-                >
-                  <Card className="group h-full bg-card/80 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-500 overflow-hidden">
-                    <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${colorClasses[service.color as keyof typeof colorClasses]} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+              {filteredServices.map((service, index) => {
+                const colorClasses = getColorClasses(service.color);
+                return (
+                  <motion.div
+                    key={service.id}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.1, duration: 0.5 }}
+                    whileHover={{ y: -8 }}
+                    onHoverStart={() => setHoveredService(service.id)}
+                    onHoverEnd={() => setHoveredService(null)}
+                  >
+                    <Card className="group h-full bg-card/80 backdrop-blur-sm border-border hover:border-primary/50 transition-all duration-500 overflow-hidden">
+                      <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${colorClasses.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
-                    <CardHeader className="pb-4">
-                      <div className="flex items-start justify-between mb-4">
-                        <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${colorClasses[service.color as keyof typeof colorClasses]} bg-opacity-10 flex items-center justify-center`}>
-                          <service.icon className={`w-7 h-7 text-${service.color}-500`} />
+                      <CardHeader className="pb-4">
+                        <div className="flex items-start justify-between mb-4">
+                          <div className={`w-14 h-14 rounded-xl ${colorClasses.bg} ${colorClasses.border} flex items-center justify-center`}>
+                            <service.icon className={`w-7 h-7 ${colorClasses.text}`} />
+                          </div>
                         </div>
-                      </div>
 
-                      <CardTitle className="text-2xl mb-2 group-hover:text-primary transition-colors">
-                        {service.title}
-                      </CardTitle>
+                        <CardTitle className="text-xl mb-2 group-hover:text-primary transition-colors">
+                          {service.title}
+                        </CardTitle>
 
-                      <CardDescription className="text-base">
-                        {service.description}
-                      </CardDescription>
-                    </CardHeader>
+                        <CardDescription className="text-sm">
+                          {service.description}
+                        </CardDescription>
+                      </CardHeader>
 
-                    <CardContent className="pb-6">
-                      {/* Features */}
-                      <div className="space-y-3 mb-6">
-                        <h4 className="font-semibold text-sm text-muted-foreground flex items-center gap-2">
-                          <CheckCircle2 className="w-4 h-4" />
-                          Key Features
-                        </h4>
-                        <ul className="space-y-2">
-                          {service.features.slice(0, 3).map((feature, i) => (
-                            <li key={i} className="flex items-center gap-2 text-sm">
-                              <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                              {feature}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </CardContent>
+                      <CardContent className="pb-6">
+                        {/* Features */}
+                        <div className="space-y-3 mb-6">
+                          <h4 className="font-semibold text-sm text-muted-foreground flex items-center gap-2">
+                            <CheckCircle2 className="w-4 h-4" />
+                            Key Features
+                          </h4>
+                          <ul className="space-y-2">
+                            {service.features.slice(0, 3).map((feature, i) => (
+                              <li key={i} className="flex items-center gap-2 text-sm">
+                                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
+                                {feature}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </CardContent>
 
-                    <CardFooter className="pt-4 border-t">
-                      <Button className="w-full gap-2 group">
-                        View Details
-                        <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                </motion.div>
-              ))}
+                      <CardFooter className="pt-4 border-t">
+                        <Button
+                          className="w-full gap-2 group"
+                          onClick={() => openServiceDialog(service)}
+                        >
+                          View Details
+                          <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </CardFooter>
+                    </Card>
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </AnimatePresence>
         </div>
@@ -312,7 +384,7 @@ const Services = () => {
         {/* Process Timeline */}
         <div className="mb-24">
           <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
               My <span className="text-primary">Process</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -352,9 +424,101 @@ const Services = () => {
             </div>
           </div>
         </div>
-
-
       </div>
+
+      {/* Service Details Dialog */}
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          {selectedService && (
+            <>
+              <DialogHeader>
+                <div className="flex items-center gap-4">
+                  <div className={`w-12 h-12 rounded-xl ${getColorClasses(selectedService.color).bg} ${getColorClasses(selectedService.color).border} flex items-center justify-center`}>
+                    <selectedService.icon className={`w-6 h-6 ${getColorClasses(selectedService.color).text}`} />
+                  </div>
+                  <div>
+                    <DialogTitle className="text-2xl">{selectedService.title}</DialogTitle>
+                    <DialogDescription>
+                      {selectedService.price} • {selectedService.turnaround} turnaround
+                    </DialogDescription>
+                  </div>
+                </div>
+              </DialogHeader>
+
+              <div className="space-y-6">
+                <div>
+                  <h4 className="font-semibold mb-2">Description</h4>
+                  <p className="text-muted-foreground">{selectedService.description}</p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <h4 className="font-semibold mb-3">Key Features</h4>
+                    <ul className="space-y-2">
+                      {selectedService.features.map((feature: string, i: number) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                          <span>{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="font-semibold mb-3">Deliverables</h4>
+                    <ul className="space-y-2">
+                      {selectedService.deliverables.map((item: string, i: number) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {selectedService.stats && (
+                  <div>
+                    <h4 className="font-semibold mb-3">Typical Results</h4>
+                    <div className="grid grid-cols-3 gap-4">
+                      {Object.entries(selectedService.stats).map(([key, value], i) => (
+                        <div key={i} className="text-center p-3 bg-secondary/50 rounded-lg">
+                          <div className="text-xl font-bold text-primary">{String(value)}</div>
+                          <div className="text-xs text-muted-foreground capitalize">{key}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {selectedService.examples && (
+                  <div>
+                    <h4 className="font-semibold mb-3">Perfect For</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedService.examples.map((example: string, i: number) => (
+                        <Badge key={i} variant="secondary">
+                          {example}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div className="flex gap-4 pt-6 border-t">
+                <Button className="flex-1 gap-2">
+                  <Calendar className="w-4 h-4" />
+                  Book This Service
+                </Button>
+                <Button variant="outline" onClick={() => setDialogOpen(false)}>
+                  <X className="w-4 h-4 mr-2" />
+                  Close
+                </Button>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

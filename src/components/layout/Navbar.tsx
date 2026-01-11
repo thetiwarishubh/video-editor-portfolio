@@ -73,6 +73,14 @@ const Navbar = () => {
     toggleTheme();
   };
 
+  const handleHireMeClick = () => {
+  const phoneNumber = "919334609201";
+  const message = "Hi, I want to hire you!";
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  window.open(whatsappUrl, "_blank");
+};
+
+
   return (
     <>
       {/* ================= NAVBAR ================= */}
@@ -125,7 +133,7 @@ const Navbar = () => {
               )}
             </motion.button>
 
-            <Button size="sm" className="rounded-full cursor-pointer">
+            <Button onClick={handleHireMeClick} size="sm" className="rounded-full cursor-pointer">
               Hire Me
             </Button>
           </div>

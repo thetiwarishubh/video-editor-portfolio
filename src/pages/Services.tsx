@@ -247,7 +247,7 @@ const Services = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+              className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6"
             >
               {filteredServices.map((service, index) => (
                 <motion.div
@@ -312,7 +312,7 @@ const Services = () => {
         {/* Process Timeline */}
         <div className="mb-24">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">
               My <span className="text-primary">Process</span>
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -323,7 +323,7 @@ const Services = () => {
           <div className="relative max-w-5xl mx-auto">
             <div className="absolute left-0 right-0 top-1/2 h-0.5 bg-gradient-to-r from-primary via-primary/50 to-primary/10 hidden md:block" />
 
-            <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div className="grid min-[450px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
               {processSteps.map((step, index) => (
                 <motion.div
                   key={step.step}

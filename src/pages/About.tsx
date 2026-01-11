@@ -196,11 +196,11 @@ const About = () => {
             Professional Video Editor
           </div>
 
-          <h1 className="hero-text text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-extrabold tracking-tighter text-foreground mb-6">
+          <h1 className="hero-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter text-foreground mb-6">
             Rahul<span className="text-primary"> Kumar Das</span>
           </h1>
 
-          <p className="hero-text text-xl sm:text-2xl md:text-3xl text-muted-foreground max-w-4xl mx-auto font-light mb-10">
+          <p className="hero-text text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto font-light mb-10">
             I turn raw footage into stories people <span className="text-primary font-semibold">can't scroll past</span>.
           </p>
         </div>

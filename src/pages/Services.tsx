@@ -34,7 +34,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 
 const Services = () => {
   const [activeTab, setActiveTab] = useState("all");
-  const [hoveredService, setHoveredService] = useState<number | null>(null);
+  const [, setHoveredService] = useState<number | null>(null);
   const [selectedService, setSelectedService] = useState<any>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
   const servicesRef = useRef<HTMLDivElement>(null);

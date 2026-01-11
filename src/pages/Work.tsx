@@ -29,7 +29,7 @@ const Work = () => {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [videoDialogOpen, setVideoDialogOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState("all");
-  const [projectsLoaded, setProjectsLoaded] = useState(false);
+  const [, setProjectsLoaded] = useState(false);
 
   const projects = [
     {

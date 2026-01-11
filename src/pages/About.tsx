@@ -193,14 +193,14 @@ const About = () => {
         <div className="text-center mb-10 md:mb-14 lg:mb-18">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-8">
             <Sparkles className="w-4 h-4" />
-            Professional Video Editor
+            Video Editor & Motion Graphics Artist 
           </div>
 
           <h1 className="hero-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter text-foreground mb-6">
             Rahul<span className="text-primary"> Kumar Das</span>
           </h1>
 
-          <p className="hero-text text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto font-light mb-4">
+          <p className="hero-text text-base sm:text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto font-light mb-4">
             I turn raw footage into stories people <span className="text-primary font-semibold">can't scroll past</span>.
           </p>
         </div>
@@ -214,7 +214,7 @@ const About = () => {
                   <CardContent className="p-4 md:p-6 text-center flex flex-col items-center relative">
                     <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-5 group-hover:opacity-10 transition-opacity`} />
                     <stat.icon className="w-8 h-8 md:w-10 md:h-10 text-primary mb-3 md:mb-4 transition-transform group-hover:scale-110" />
-                    <p className="text-xl md:text-2xl lg:text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r bg-gradient-to-r from-foreground to-foreground/80">
+                    <p className="text-lg md:text-xl lg:text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r bg-gradient-to-r from-foreground to-foreground/80">
                       {stat.value}
                     </p>
                     <p className="text-xs md:text-sm text-muted-foreground mt-1 md:mt-2 font-medium">

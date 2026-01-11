@@ -187,7 +187,7 @@ const Services = () => {
         >
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-8">
             <Award className="w-4 h-4" />
-            Premium Video Editing Services
+            Video Editing Services
           </div>
 
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter mb-6">

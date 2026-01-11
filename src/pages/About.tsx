@@ -186,11 +186,11 @@ const About = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen bg-background text-foreground pt-8 pb-16 md:py-24 lg:py-32"
+      className="relative min-h-screen bg-background text-foreground pt-8 pb-16 md:py-12 lg:py-16"
     >
       <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl">
         {/* Hero Section */}
-        <div className="text-center mb-20 md:mb-28 lg:mb-36">
+        <div className="text-center mb-10 md:mb-14 lg:mb-18">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-8">
             <Sparkles className="w-4 h-4" />
             Professional Video Editor
@@ -200,7 +200,7 @@ const About = () => {
             Rahul<span className="text-primary"> Kumar Das</span>
           </h1>
 
-          <p className="hero-text text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto font-light mb-10">
+          <p className="hero-text text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-4xl mx-auto font-light mb-4">
             I turn raw footage into stories people <span className="text-primary font-semibold">can't scroll past</span>.
           </p>
         </div>
@@ -376,13 +376,6 @@ const About = () => {
             </Link>
           </div>
         </div>
-      </div>
-
-      {/* Floating Contact Button */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <Button className="rounded-full w-14 h-14 shadow-lg">
-          <Mail className="w-6 h-6" />
-        </Button>
       </div>
     </section>
   );

@@ -22,6 +22,7 @@ import {
   TrendingUp,
   Mail,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -138,12 +139,14 @@ const About = () => {
   ];
 
   const timelineItems = [
-    { year: "2021", text: "Started editing as hobby — gaming & vlogs" },
-    { year: "2022", text: "First paid client — local creators" },
-    { year: "2023", text: "Full-time freelance, 50+ projects" },
-    { year: "2024–2025", text: "Working with 10–50k+ subscriber creators" },
-    { year: "Now", text: "Focused on premium, high-retention storytelling" },
+    { year: "2020", text: "Started editing with a second-hand laptop" },
+    { year: "2021", text: "Hobby turned passion — gaming & vlog edits" },
+    { year: "2022", text: "First paid client from local creators" },
+    { year: "2023", text: "Full-time freelancer with 50+ completed projects" },
+    { year: "2024-2025", text: "Collaborated with large creators (100K–500K subs)" },
+    { year: "Now", text: "Working with 1M+ subscriber creators, crafting premium storytelling edits" },
   ];
+
 
   // Technical Skills
   const skills = [
@@ -211,7 +214,7 @@ const About = () => {
                   <CardContent className="p-4 md:p-6 text-center flex flex-col items-center relative">
                     <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-5 group-hover:opacity-10 transition-opacity`} />
                     <stat.icon className="w-8 h-8 md:w-10 md:h-10 text-primary mb-3 md:mb-4 transition-transform group-hover:scale-110" />
-                    <p className="text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r bg-gradient-to-r from-foreground to-foreground/80">
+                    <p className="text-xl md:text-2xl lg:text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r bg-gradient-to-r from-foreground to-foreground/80">
                       {stat.value}
                     </p>
                     <p className="text-xs md:text-sm text-muted-foreground mt-1 md:mt-2 font-medium">
@@ -350,23 +353,27 @@ const About = () => {
 
         {/* Final CTA */}
         <div className="text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-6">
             Ready to make your next video <span className="text-primary">unskippable</span>?
           </h2>
 
-          <p className="text-lg md:text-xl text-muted-foreground mb-10 md:mb-12 max-w-2xl mx-auto">
+          <p className="text-sm md:text-base text-muted-foreground mb-10 md:mb-12 max-w-2xl mx-auto">
             Let's create something that doesn't just look good — it performs.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="min-w-[200px] text-lg gap-2">
-              <Video className="w-5 h-5" />
-              See My Work
-            </Button>
-            <Button size="lg" variant="outline" className="min-w-[200px] text-lg gap-2">
-              <Mail className="w-5 h-5" />
-              Let's Talk
-            </Button>
+            <Link to="/work">
+              <Button size="lg" className="min-w-[200px] cursor-pointer text-base gap-2">
+                <Video className="w-5 h-5" />
+                See My Work
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button size="lg" variant="outline" className="cursor-pointer min-w-[200px] text-base gap-2">
+                <Mail className="w-5 h-5" />
+                Let's Talk
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

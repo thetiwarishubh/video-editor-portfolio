@@ -108,7 +108,7 @@ const Work = () => {
       category: "commercial",
       platform: "LinkedIn",
       thumbnail: "/projects/brand-commercial.jpg",
-      videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+      videoUrl: "https://youtube.com/shorts/8Rx3Nvo3Zvg?si=EQ7ELcVpo5C5KgFc",
       description: "Cinematic brand film with emotional storytelling, motion graphics, and corporate messaging",
       duration: "1:30",
       stats: { engagement: "91%", leads: "+45%", shares: "2.3K" },

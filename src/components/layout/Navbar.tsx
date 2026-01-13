@@ -93,7 +93,7 @@ const Navbar = () => {
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
           {/* LOGO */}
-          <NavLink to="/" className="text-xl font-bold text-white">
+          <NavLink to="/" className="text-2xl font-bold text-white">
             Rahul<span className="text-violet-400">Motion</span>
           </NavLink>
 

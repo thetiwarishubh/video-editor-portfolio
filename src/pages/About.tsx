@@ -193,7 +193,7 @@ const About = () => {
         <div className="text-center mb-10 md:mb-14 lg:mb-18">
           <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-8">
             <Sparkles className="w-4 h-4" />
-            Video Editor & Motion Graphics Artist 
+            Video Editor & Motion Graphics Artist
           </div>
 
           <h1 className="hero-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tighter text-foreground mb-6">
@@ -210,7 +210,7 @@ const About = () => {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
             {stats.map((stat, i) => (
               <div key={i} className="stat-card group">
-                <Card className="h-full bg-card/80 backdrop-blur-sm border border-border transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 group-hover:scale-[1.02] overflow-hidden">
+                <Card className="h-full bg-card/80 backdrop-blur-sm border border-border transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 group-hover:scale-[1.02] hover:-translate-y-1 overflow-hidden">
                   <CardContent className="p-4 md:p-6 text-center flex flex-col items-center relative">
                     <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-5 group-hover:opacity-10 transition-opacity`} />
                     <stat.icon className="w-8 h-8 md:w-10 md:h-10 text-primary mb-3 md:mb-4 transition-transform group-hover:scale-110" />

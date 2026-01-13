@@ -29,7 +29,7 @@ const Footer = () => {
             <h3 className="text-2xl font-bold tracking-tight">
               Rahul<span className="text-primary text-violet-400">Motion</span>
             </h3>
-            <p className="mt-4 text-muted-foreground leading-relaxed max-w-md">
+            <p className="mt-4 text-muted-foreground text-sm leading-relaxed max-w-md">
               Crafting cinematic video edits that stop the scroll and keep viewers
               hooked. High-retention storytelling for ambitious creators and brands.
             </p>

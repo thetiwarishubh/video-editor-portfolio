@@ -5,6 +5,8 @@ Built with modern frontend tools and smooth motion design to create
 a high-end, client-ready experience.
 
 
+![alt text](<public/Screenshot 2026-01-15 225649.png>)
+
 ## 🚀 Live Demo
 Example: https://rahulmotion.vercel.app
 

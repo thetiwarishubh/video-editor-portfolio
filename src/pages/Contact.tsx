@@ -153,7 +153,7 @@ const Contact = () => {
               />
             </div>
 
-            <Button size="lg" className="w-full rounded-full">
+            <Button size="lg" className="w-full rounded-full cursor-pointer">
               Send Message
             </Button>
           </motion.form>

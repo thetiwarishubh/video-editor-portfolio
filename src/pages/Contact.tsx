@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import {
+  Mail,
+} from "lucide-react";
 
 const Contact = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -91,7 +94,27 @@ const Contact = () => {
             <div>
               <h3 className="text-lg font-semibold">Email</h3>
               <p className="mt-2 text-sm text-zinc-400">
-                yourmail@email.com
+                <div className="flex">
+                  {[
+                    { icon: Mail, href: "mailto:Rahulkumardas400m@gmail.com", label: "Email" }
+                  ].map((item, i) => (
+                    <motion.a
+                      key={item.label}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.1 }}
+                      className="text-muted-foreground hover:text-primary transition-colors pr-1 rounded-full hover:bg-primary/10"
+                      aria-label={item.label}
+                    >
+                      <item.icon size={22} />
+                    </motion.a>
+                  ))}
+                  rahulkumardas400m@gmail.com
+                </div>
+
               </p>
             </div>
           </motion.div>

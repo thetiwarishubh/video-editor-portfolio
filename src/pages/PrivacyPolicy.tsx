@@ -1,6 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Mail } from "lucide-react";
 
 const PrivacyPolicy = () => {
   const lastUpdated = "January 10, 2026";
@@ -66,9 +69,35 @@ const PrivacyPolicy = () => {
 
             <h2 className="text-2xl font-bold text-foreground mt-12">9. Contact Us</h2>
             <p>For any questions, reach out at:</p>
-            <p className="mt-2">
-              Email: rahulkumardas400m@gmail.com<br />
-              Website: https://rahulmotion.vercel.app/contact
+            <p className="mt-2 flex flex-col gap-4">
+              <div className="flex">
+                {[
+                  { icon: Mail, href: "mailto:Rahulkumardas400m@gmail.com", label: "Email" }
+                ].map((item, i) => (
+                  <motion.a
+                    key={item.label}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                    className="text-muted-foreground hover:text-primary transition-colors pr-1 rounded-full hover:bg-primary/10"
+                    aria-label={item.label}
+                  >
+                    <item.icon size={22} />
+                  </motion.a>
+                ))}
+                rahulkumardas400m@gmail.com
+              </div>
+              <Link to="/contact">
+                <Button
+                  size="lg"
+                  className="rounded-sm px-12 md:px-12 py-6 md:py-6 cursor-pointer text-sm md:text-base gap-2 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/30 transition-all duration-300 hover:scale-[1.02]"
+                >
+                  Contact
+                </Button>
+              </Link>
             </p>
           </div>
         </motion.div>

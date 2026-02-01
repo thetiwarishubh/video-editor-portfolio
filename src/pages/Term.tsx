@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 const TermsOfService = () => {
   const lastUpdated = "January 10, 2026";
@@ -58,7 +60,16 @@ const TermsOfService = () => {
             <p>These Terms are governed by the laws of India. Disputes shall be resolved in the courts of [your city/state].</p>
 
             <h2 className="text-2xl font-bold text-foreground mt-12">9. Contact</h2>
-            <p>Questions? Reach us at hello@rahulmotion.com</p>
+            <p>Questions? Reach us at 
+              <Link className="pl-2" to="/contact">
+                <Button
+                  size="lg"
+                  className="rounded-sm cursor-pointer text-sm md:text-base bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/30 transition-all duration-300 hover:scale-[1.01]"
+                >
+                  Contact
+                </Button>
+              </Link>
+            </p>
           </div>
         </motion.div>
       </div>

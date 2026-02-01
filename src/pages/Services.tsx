@@ -241,7 +241,7 @@ const Services = () => {
   };
 
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-background via-background to-secondary/10 text-foreground py-16 md:py-20 lg:py-24 overflow-hidden">
+    <section className="relative min-h-screen bg-gradient-to-b from-background via-background to-secondary/10 text-foreground md:py-12 lg:py-16 overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/5 rounded-full blur-3xl" />

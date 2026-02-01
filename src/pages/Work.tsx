@@ -138,7 +138,7 @@ const Work = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 md:py-24 bg-background text-foreground">
+    <section ref={sectionRef} className="md:py-12 lg:py-16 bg-background text-foreground">
       <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
         {/* Hero */}
         <div className="text-center mb-16">

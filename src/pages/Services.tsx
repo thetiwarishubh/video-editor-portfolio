@@ -366,7 +366,7 @@ const Services = () => {
 
                       <CardFooter className="pt-4 border-t">
                         <Button
-                          className="w-full gap-2 group"
+                          className="w-full gap-2 group cursor-pointer"
                           onClick={() => openServiceDialog(service)}
                         >
                           View Details
@@ -506,11 +506,11 @@ const Services = () => {
               </div>
 
               <div className="flex gap-4 pt-6 border-t">
-                <Button className="flex-1 gap-2">
+                <Button className="flex-1 gap-2 cursor-pointer">
                   <Calendar className="w-4 h-4" />
                   Book This Service
                 </Button>
-                <Button variant="outline" onClick={() => setDialogOpen(false)}>
+                <Button className="cursor-pointer" variant="outline" onClick={() => setDialogOpen(false)}>
                   <X className="w-4 h-4 mr-2" />
                   Close
                 </Button>
